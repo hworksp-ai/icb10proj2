@@ -113,3 +113,8 @@ plots/
 # OS
 .DS_Store
 desktop.ini
+
+# Exclude all hidden files and directories
+.*
+# Allow tracking of .gitignore itself
+!.gitignore
