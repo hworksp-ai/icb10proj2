@@ -2,6 +2,8 @@
 
 이 문서는 네이버 API 데이터 수집 및 분석 대시보드를 **Streamlit Community Cloud**에 배포하는 방법을 안내합니다.
 
+* **실제 배포된 Streamlit 서비스 주소**: [https://icb10proj2-jbvddkfiegw8vfglp4cbsu.streamlit.app/](https://icb10proj2-jbvddkfiegw8vfglp4cbsu.streamlit.app/)
+
 ---
 
 ## 1. 사전 준비 사항

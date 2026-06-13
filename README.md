@@ -1,3 +1,69 @@
+# 📊 네이버 오픈API 데이터 수집 및 분석 대시보드 (icb10proj2)
+
+네이버 검색 API 및 데이터랩(Datalab) API를 연동하여 트렌드 분석, 쇼핑 인사이트, 소셜 및 뉴스 데이터를 다차원 탐색(EDA)하고 정제되지 않은 텍스트 데이터를 시각적으로 요약해 주는 Streamlit 대시보드 프로젝트입니다.
+
+🚀 **실제 배포된 Streamlit 앱 주소**: [https://icb10proj2-jbvddkfiegw8vfglp4cbsu.streamlit.app/](https://icb10proj2-jbvddkfiegw8vfglp4cbsu.streamlit.app/)
+
+---
+
+## 🛠️ 프로젝트 핵심 기능
+
+1. **📈 네이버 데이터랩(Datalab) 검색어 트렌드 분석**
+   - 설정한 키워드 그룹들의 일별 검색 상대 빈도 트렌드를 비교 가능한 라인 차트(Plotly)로 제공
+2. **🛍️ 쇼핑 트렌드 및 다차원 분석 (EDA)**
+   - 최저가 분포, 브랜드 및 제조사 점유율, Pareto 차트(상위 80% 누적 점유율 분석)
+3. **💬 소셜 및 뉴스 수집 데이터 발행 분석**
+   - 블로그, 카페글, 뉴스 검색 결과 수집 및 일자별 발행 빈도 시각화
+4. **🧠 비정형 텍스트 핵심 키워드 추출**
+   - 형태소 분석기 없이 가벼운 TF-IDF Vectorizer 기반으로 정제된 본문 텍스트 내 주요 키워드 Top 30 추출 및 가로 막대 차트 제공
+5. **🔐 통합 보안 API Key 로드**
+   - **Streamlit Secrets** 및 로컬 **`.env`** 환경 연동 (보안상 하드코딩 없음)
+   - 설정이 누락된 경우에만 사이드바에 수동 입력 폼이 제공되며, 키가 자동 주입되면 안내 메시지만 깔끔하게 노출
+6. **🔄 Git 자동 동기화 자동화**
+   - 커밋 완료 즉시 원격에 푸시되는 **`post-commit` Git Hook** 적용
+   - 변경 감지 즉시 커밋/푸시를 해주는 **`auto_git_watcher.py` (Watchdog 데몬)** 제공
+
+---
+
+## 💻 기술 스택
+
+- **언어**: Python 3
+- **웹 프레임워크**: Streamlit
+- **데이터 분석/가공**: Pandas, Numpy, Scikit-learn (TF-IDF)
+- **시각화 라이브러리**: Plotly (Express, Graph Objects)
+- **자동화 및 도구**: Git Hooks, watchdog
+
+---
+
+## 🏃 로컬 실행 방법
+
+1. **의존성 패키지 설치**
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. **자격증명 설정 (.env)**
+   - 루트 경로의 `.env.template` 파일을 복사하여 `.env` 파일을 생성하고 네이버 API 키를 입력합니다.
+   ```env
+   NAVER_CLIENT_ID=여러분의_클라이언트_ID
+   NAVER_CLIENT_SECRET=여러분의_클라이언트_시크릿
+   ```
+3. **Streamlit 서버 실행**
+   ```bash
+   cd naver-api-app
+   streamlit run src/app.py
+   ```
+
+---
+
+## 📝 상세 가이드 및 관련 문서
+- [Streamlit Cloud 배포 및 Secrets 설정 가이드](file:///C:/Users/dydak/Desktop/icb10proj2/naver-api-app/docs/deployment.md)
+- [네이버 API 연동 모듈 (naver_api.py)](file:///C:/Users/dydak/Desktop/icb10proj2/naver-api-app/src/naver_api.py)
+- [대시보드 메인 앱 (app.py)](file:///C:/Users/dydak/Desktop/icb10proj2/naver-api-app/src/app.py)
+
+---
+
+## 📋 프로젝트 협업 가이드라인 (기존 체크리스트)
+
 ## STEP 0. 팀 구성 및 협업 환경 세팅
 
 ### 슬랙 세팅
