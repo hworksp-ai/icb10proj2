@@ -195,12 +195,13 @@ with st.sidebar:
     st.markdown("---")
 
     # ── API 키 입력 ────────────────────────────────────────
-    # 자동 로드된 API 자격증명이 없는 경우에만 수동 입력 폼을 표시합니다.
-    if not default_client_id or not default_client_secret:
-        st.markdown("#### 🔑 네이버 API 설정")
+    st.markdown("#### 🔑 네이버 API 설정")
+    if default_client_id and default_client_secret:
+        st.success("✅ API 키가 자동 설정되었습니다. (.env / Secrets)")
+    else:
         st.text_input("Client ID", type="password", key="naver_client_id", help="네이버 개발자 센터에서 발급받은 ID를 입력하세요.")
         st.text_input("Client Secret", type="password", key="naver_client_secret", help="네이버 개발자 센터에서 발급받은 Secret을 입력하세요.")
-        st.markdown("---")
+    st.markdown("---")
 
     # ── 공통 검색 설정 ─────────────────────────────────────
     st.markdown("#### 🔍 수집 및 분석 제어")
