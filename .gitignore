@@ -118,3 +118,6 @@ desktop.ini
 .*
 # Allow tracking of .gitignore itself
 !.gitignore
+# Allow tracking of streamlit config
+!.streamlit/
+
