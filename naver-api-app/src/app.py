@@ -197,7 +197,7 @@ with st.sidebar:
     # ── API 키 입력 ────────────────────────────────────────
     st.markdown("#### 🔑 네이버 API 설정")
     if default_client_id and default_client_secret:
-        st.success("✅ API 키가 자동 설정되었습니다. (.env / Secrets)")
+        st.success("✅ API 키가 자동 설정되었습니다.")
     else:
         st.text_input("Client ID", type="password", key="naver_client_id", help="네이버 개발자 센터에서 발급받은 ID를 입력하세요.")
         st.text_input("Client Secret", type="password", key="naver_client_secret", help="네이버 개발자 센터에서 발급받은 Secret을 입력하세요.")
