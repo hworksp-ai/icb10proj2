@@ -17,8 +17,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import re
+import os
+from dotenv import load_dotenv
 from typing import List, Dict, Any, Optional
 from sklearn.feature_extraction.text import TfidfVectorizer
+
+# .env 파일 로드 (로컬 환경 지원)
+load_dotenv()
 
 # 네이버 API 클라이언트 임포트
 from naver_api import NaverAPIClient
@@ -87,10 +92,27 @@ def analyze_tfidf(texts: List[str], top_n: int = 30) -> pd.DataFrame:
 # -----------------------------------------------------------------------------
 if "current_page" not in st.session_state:
     st.session_state.current_page = "대시보드 소개"
+# 네이버 API 자격증명 초기화 (우선순위: st.secrets -> os.environ -> "")
+default_client_id = ""
+default_client_secret = ""
+
+try:
+    if "NAVER_CLIENT_ID" in st.secrets:
+        default_client_id = st.secrets["NAVER_CLIENT_ID"]
+    if "NAVER_CLIENT_SECRET" in st.secrets:
+        default_client_secret = st.secrets["NAVER_CLIENT_SECRET"]
+except Exception:
+    pass
+
+if not default_client_id:
+    default_client_id = os.getenv("NAVER_CLIENT_ID", "")
+if not default_client_secret:
+    default_client_secret = os.getenv("NAVER_CLIENT_SECRET", "")
+
 if "naver_client_id" not in st.session_state:
-    st.session_state["naver_client_id"] = ""
+    st.session_state["naver_client_id"] = default_client_id
 if "naver_client_secret" not in st.session_state:
-    st.session_state["naver_client_secret"] = ""
+    st.session_state["naver_client_secret"] = default_client_secret
 
 # 사이드바 CSS 스타일 (카테고리 그룹 + 버튼 스타일 네비게이션)
 st.markdown("""

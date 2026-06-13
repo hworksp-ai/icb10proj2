@@ -120,4 +120,6 @@ desktop.ini
 !.gitignore
 # Allow tracking of streamlit config
 !.streamlit/
+# Allow tracking of env template
+!.env.template
 
